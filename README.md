@@ -10,7 +10,7 @@ Assuming the password-store entry "foo" formatted as YAML:
 ```yaml
 super-secret-password
 ---
-username: foo
+username: bar
 url: foo.tld
 ```
 
