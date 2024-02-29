@@ -53,8 +53,8 @@ Persist the variable by defining it in your .bashrc or equivalent.
 Put the script "select.bash" in the password-store extensions.
 For example:
 ```console
-$ cd /usr/lib/password-store/extensions
-$ sudo wget https://github.com/AdrienHorgnies/pass-select/releases/latest/download/select.bash
+cd /usr/lib/password-store/extensions
+sudo wget https://github.com/AdrienHorgnies/pass-select/releases/latest/download/select.bash
 ```
 
 You'll also want to define PASSWORD_STORE_CONTENT_SELECTOR in your .bashrc or equivalent:
