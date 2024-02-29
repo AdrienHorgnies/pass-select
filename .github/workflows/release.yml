@@ -15,10 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Get version
         run: echo "VERSION=$(git rev-list --count HEAD)" >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: select.bash
-          tag_name: ${{ env.VERSION }}
+          tag_name: v${{ env.VERSION }}
