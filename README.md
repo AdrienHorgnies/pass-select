@@ -25,7 +25,7 @@ bar
 
 No option sends the selected value to the standard output.
 The option -c copies the selected value to the clipboard.
-The option -q displays a QR code representation of the select value.
+The option -q displays a QR code representation of the selected value.
 
 ## Custom content selector
 
