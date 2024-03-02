@@ -1,8 +1,13 @@
 # pass-select
 
 pass-select is an extension for [password-store].
-It helps users to select data from their password-store entries in their preferred file format.
+It helps users to select data from their password-store entries **using their preferred file format**.
 It calls a user defined executable to retrieve the relevant part of an entry.
+A good example would be [yq] which supports YAML, JSON and XML.
+
+Without pass-select, a user may:
+- Either pipe pass output into their tool, ex.: `pass foo | yq '.username' | wl-copy && sleep 45 && wl-copy -c &`
+- Or get irrelevant metadata along the desired value, ex.: getting "username: foo" instead of "foo".
 
 ## Usage
 
@@ -14,8 +19,6 @@ username: bar
 url: foo.tld
 ```
 
-Say a user wants to retrieve the username using [yq].
-
 A user may do:
 ```console
 $ export PASSWORD_STORE_CONTENT_SELECTOR=yq
@@ -23,7 +26,7 @@ $ pass select foo .username
 bar
 ```
 
-No option sends the selected value to the standard output.
+By default, it sends the selected value to the standard output.
 The option -c copies the selected value to the clipboard.
 The option -q displays a QR code representation of the selected value.
 
@@ -33,7 +36,7 @@ The user can choose or create a custom content selector.
 
 The interface is:
 - /dev/stdin is given the unencrypted content of the password entry.
-- The first argument is expression given to pass-select.
+- The first argument is the expression given to pass-select.
 - The result must be sent to /dev/stdout.
 - The result must be empty if it didn't find the given expression.
 - A non zero exit status aborts the command.
@@ -67,7 +70,7 @@ export PASSWORD_STORE_CONTENT_SELECTOR=<executable name/path>
 
 Simply remove the script:
 ```console
-$ sudo rm /usr/lib/password-store/extensions/select.bash
+sudo rm /usr/lib/password-store/extensions/select.bash
 ```
 
 [password-store]: https://www.passwordstore.org/
